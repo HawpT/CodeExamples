@@ -1,0 +1,198 @@
+/** 
+* This is an example of LESS that I have written to override the
+* button styles provided by Bootstrap 4. It was implemented in the
+* MEAN stack we made and maintained with SquareHook.
+*/
+@inactiveLinkColor: rgba(255, 255, 255, 0.75);
+@activeLinkColor: rgba(255, 255, 255, 1);
+@blue: rgba(25, 118, 210, 1);
+@darkBlue: darken(@blue,5%);
+@red: rgba(248, 49, 49, 1);
+@green: rgba(92,193,25,1);
+@yellow: rgba(210,198,25,1);
+@pink: rgba(255,82,82,1);
+@orange: rgba(255,87,34,1);
+@background-midnight: #263238;
+@defaultTextColor: #2d2d2d;
+@defaultBorderColor: rgba(0,0,0,0.3);
+@themeColorDefault: @blue;
+@themeColorAccent: @pink;
+@themeColorWarn: @orange;
+
+.btn,
+.form-control {
+    border-radius: 0px;
+}
+
+.btn-core,
+.btn {
+  padding: 6.5px 15px;
+  margin: 5px 0;
+  text-transform: uppercase;
+  color: @blue;
+  border: 1px solid @blue;
+  font-family: "RBNo21a-Bold", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-radius: 1px;
+  width: auto;
+  background-image: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
+  .color-class(@activeLinkColor,@activeLinkColor,@blue);
+
+  &.smooth {
+    border-radius: 6px;
+  }
+
+  &.round {
+    padding: 5px;
+    border-radius: 100px;
+    border-radius: 50%;
+
+    i {
+      height: 20px;
+      width: 20px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-self: center;
+    }
+  }
+
+  &.btn-lg {
+    font-size: 20px;
+    line-height: 20px;
+    padding: 10px 30px;
+  }
+
+  &.dark-blue,
+  &.btn-dark-blue {
+    .color-class(@activeLinkColor,@activeLinkColor,@darkBlue);
+  }
+
+  &.red,
+  &.btn-danger,
+  &.btn-danger,
+  &.danger {
+    .color-class(@activeLinkColor,@activeLinkColor,@red);
+  }
+
+  &.green,
+  &.btn-green,
+  &.btn-success,
+  &.success {
+    .color-class(@activeLinkColor,@activeLinkColor,@green);
+  }
+
+  &.yellow,
+  &.btn-yellow {
+    .color-class(@activeLinkColor,@activeLinkColor,@yellow);
+  }
+
+  &.warn,
+  &.btn-warn {
+    .color-class(@activeLinkColor,@activeLinkColor,@themeColorWarn);
+  }
+
+  &.accent,
+  &.btn-accent {
+    .color-class(@activeLinkColor,@activeLinkColor,@themeColorAccent);
+  }
+
+  &.primary,
+  &.btn-primary {
+    .color-class(@activeLinkColor,@activeLinkColor,@themeColorDefault);
+  }
+
+  &.white,
+  &.btn-white {
+    .color-class(#2d2d2d,#2d2d2d,#ffffff);
+  }
+
+  &.transparent,
+  &.btn-transparent {
+    .color-class(#2d2d2d,#2d2d2d,transparent);
+  }
+}
+
+.color-class(@color,@hovercolor,@bgcolor) {
+  color: @color;
+  border-color: @bgcolor;
+  background-color: @bgcolor;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    text-decoration: none;
+    color: @hovercolor;
+    border-color: darken(@bgcolor,10%);
+    background-color: darken(@bgcolor,10%);
+  }
+
+  &.disabled,
+  &[disabled] {
+    opacity: 0.3;
+    border-width: 1px;
+    color: @color;
+    border-color: @bgcolor;
+    background-color: @bgcolor;
+
+    &:hover,
+    &:focus {
+      opacity: 0.3;
+      cursor: default;
+      color: @color;
+      border-color: @bgcolor;
+      background-color: @bgcolor;
+    }
+  }
+
+  &.inverse {
+    color: @bgcolor;
+    border-color: @bgcolor;
+    background-color: @color;
+
+    &:hover,
+    &:focus {
+      color: @bgcolor;
+      border-color: @bgcolor;
+      background-color: darken(@color,10%);
+    }
+
+    &.disabled,
+    &[disabled] {
+      opacity: 0.3;
+      border-width: 1px;
+      color: @color;
+      border-color: @bgcolor;
+      background-color: @bgcolor;
+
+      &:hover,
+      &:focus {
+        opacity: 0.3;
+        cursor: default;
+        color: @color;
+        border-color: @bgcolor;
+        background-color: @bgcolor;
+      }
+    }
+  }
+
+  &.transparent {
+    opacity: 0.5;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}
+
